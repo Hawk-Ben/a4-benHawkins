@@ -294,3 +294,81 @@ window.onload = function() {
   })
 
 }
+
+//-----------------------------React code past this------------------------
+import { useState } from 'react';
+
+function brick({title, body, onBrickClick}){
+  return(
+    <>
+    <div className="brick" onClick={onBrickClick}>
+    <h2>{title}</h2>
+    <p>{body}</p>
+    </div>
+    </>
+  )
+}
+
+export default function Wall(){
+  const [selectedBrick, setSelectedBrick] = useState(-1)
+
+  function handleClick(i){
+    if (i == selectedBrick){
+      setSelectedBrick(-1)
+      //No bricks are yellow
+    }
+    setSelectedBrick(i)
+    //Make the brick selected yellow
+  }
+
+  //Need to display bricks
+  //Need to create bricks from text box
+  //Push bricks to server
+  //Edit bricks from text box
+  //Create line when brick created with selected brick (should be able to reuse code)
+
+  //WEB DESIGN ON RETURN
+  return(
+    <>
+    <body>
+    <div class="wallHeader">
+    <button class="PageSwitch" type="button" onclick="window.location.href='firstBrick.html'">Back to home</button>
+    <button type="button" id='clearWall'>Clear Wall</button>
+
+    <p class="header">Click on a brick then lay a new brick to connect them</p>
+
+    </div>
+    <div id="brickWall"></div>
+    <div class="underWall">
+      <form id='childBrickForm' class="childBrickForm">
+      <input type="text" id="childBrickTitle" name="title" placeholder="Title of your brick..." required></input>
+
+      <textarea
+        id="childBrickBody"
+        name="body"
+        placeholder="What will you write on the wall..."
+        required
+      ></textarea>
+
+      <button type="submit" id="childBrickButton">Lay your brick</button>
+    </form>
+
+    <form id='editForm' class="childBrickForm">
+      <input type="text" id="editTitle" name="title" placeholder="Select a brick to edit" required></input>
+
+      <textarea
+        id="editBody"
+        name="body"
+        placeholder="Edit the body here"
+        required
+      ></textarea>
+
+      <button type="submit" id="editButton">Edit the selected brick</button>
+    </form>
+    </div>
+    <svg id="connection"></svg>
+
+  </body>
+    </>
+  )
+}
