@@ -77,7 +77,8 @@ app.post('/api/bricks', async (req, res) => {
 
     const result = await bricks.insertOne(newBrick);
     res.status(201).json({
-      newBrick
+      ...newBrick,
+      _id: result.insertedId
     })
 
   } catch (error) {

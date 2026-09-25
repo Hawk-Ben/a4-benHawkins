@@ -4,7 +4,8 @@
   "description": "",
   "author": "",
   "scripts": {
-    "start": "node server.js"
+    "build": "esbuild public/js/main.js --bundle --outfile=public/js/bundle.js --loader:.js=jsx --jsx=automatic",
+    "start": "npm run build && node server.js"
   },
   "dependencies": {
     "@stackoverflow/stacks": "^3.0.0",
@@ -24,5 +25,8 @@
   "allowScripts": {
     "node-gyp@13.0.2": true,
     "rebuild@0.1.2": true
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
   }
 }
