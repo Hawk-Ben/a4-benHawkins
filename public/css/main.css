@@ -130,5 +130,6 @@ body {
 }
 
 .brick.selected {
+  background: yellow;
   border: 3px solid yellow;
 }
